@@ -10,6 +10,7 @@ public class MazeConstructor : MonoBehaviour
     [SerializeField] private Material treasureMat;
 
     public float placementThreshold = 0.1f;   // chance of empty space
+    private MazeMeshGenerator meshGenerator;
 
     public int[,] data
     {
@@ -39,6 +40,7 @@ public class MazeConstructor : MonoBehaviour
 
     void Awake()
     {
+        meshGenerator = new MazeMeshGenerator();
         // default to walls surrounding a single empty cell
         data = new int[,]
         {
@@ -54,6 +56,7 @@ public class MazeConstructor : MonoBehaviour
             Debug.LogError("Odd numbers work better for dungeon size.");
 
         data = FromDimensions(sizeRows, sizeCols);
+        DisplayMaze();
     }
 
     void OnGUI()
@@ -75,5 +78,22 @@ public class MazeConstructor : MonoBehaviour
         }
 
         GUI.Label(new Rect(20, 20, 500, 500), msg);
+    }
+
+    private void DisplayMaze()
+    {
+        GameObject go = new GameObject();
+        go.transform.position = Vector3.zero;
+        go.name = "Procedural Maze";
+        go.tag = "Generated";
+
+        MeshFilter mf = go.AddComponent<MeshFilter>();
+        mf.mesh = meshGenerator.FromData(data);
+        
+        MeshCollider mc = go.AddComponent<MeshCollider>();
+        mc.sharedMesh = mf.mesh;
+
+        MeshRenderer mr = go.AddComponent<MeshRenderer>();
+        mr.materials = new Material[2] {mazeMat1, mazeMat2};
     }
 }
