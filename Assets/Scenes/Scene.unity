@@ -234,6 +234,7 @@ GameObject:
   - component: {fileID: 529368645}
   - component: {fileID: 529368647}
   - component: {fileID: 529368646}
+  - component: {fileID: 529368648}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -290,6 +291,18 @@ MonoBehaviour:
   startMat: {fileID: 0}
   treasureMat: {fileID: 2100000, guid: ad3f0fbfa96bd414c8f698354958e49d, type: 2}
   placementThreshold: 0.1
+--- !u!114 &529368648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 529368642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5b63db1c5216ea4eb7176852a7354b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &974588508
 GameObject:
   m_ObjectHideFlags: 0
